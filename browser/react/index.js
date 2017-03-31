@@ -12,6 +12,8 @@ import Playlist from './components/Playlist';
 import store from './store';
 import {setLyrics} from './action-creators/lyrics';
 
+
+
 console.log('-------------------------');
 console.log('State before any actions: ', store.getState());
 
@@ -26,6 +28,22 @@ store.dispatch(rickRollAction);
 
 console.log('-------------------------');
 console.log('State after second SET_LYRICS action: ', store.getState());
+
+//
+
+const unsubscribe = store.subscribe(function () {
+    console.log('----------------');
+    console.log('State changed!!', store.getState());
+});
+
+store.dispatch(setLyrics('I can feel it coming in the air tonight ... hold on ...'));
+store.dispatch(setLyrics('Never gonna give you up, never gonna let you down'));
+
+unsubscribe();
+
+store.dispatch(setLyrics('Hello, darkness, my old friend.'));
+
+
 
 ReactDOM.render(
   <Router history={hashHistory}>
