@@ -27,9 +27,6 @@ store.dispatch(rickRollAction);
 console.log('-------------------------');
 console.log('State after second SET_LYRICS action: ', store.getState());
 
-
-
-
 ReactDOM.render(
   <Router history={hashHistory}>
     <Route path='/' component={AppContainer}>
